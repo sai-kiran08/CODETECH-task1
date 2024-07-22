@@ -1,0 +1,120 @@
+/* This is javascript file,in this i have created a separate window to display the weather information of a village/city.For that i got my apikey from openweathermap and make styling in js code only */
+
+
+document.getElementById('submit-btn').addEventListener('click', function() {
+    const village = document.getElementById('village').value;
+    const apiKey = '41aa09787628ff50f12bb9bbd7a45965'; 
+    const apiUrl = `https://api.openweathermap.org/data/2.5/weather?q=${village}&appid=${apiKey}&units=metric`;
+
+    fetch(apiUrl)
+        .then(response => {
+            if (!response.ok) {
+                throw new Error('Village not found');
+            }
+            return response.json();
+        })
+        .then(data => {
+            const temp = data.main.temp;
+            const weatherDesc = data.weather[0].description;
+            const iconCode = data.weather[0].icon;
+            const weatherIconUrl = `http://openweathermap.org/img/w/${iconCode}.png`;
+            const windSpeed = data.wind.speed;
+            const humidity = data.main.humidity;
+            const pressure = data.main.pressure;
+            const visibility = data.visibility / 1000;
+
+            const newWindow = window.open('', '', 'width=600,height=600');
+            newWindow.document.write(`
+                <!DOCTYPE html>
+                <html lang="en">
+                <head>
+                    <meta charset="UTF-8">
+                    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+                    <title>Weather Information</title>
+                    <style>
+                        body {
+                            margin: 0;
+                            padding: 20px;
+                            font-family: 'Arial', sans-serif;
+                            background: url('https://img.freepik.com/free-photo/tree-field-with-stormy-sky_188544-43348.jpg?size=626&ext=jpg&ga=GA1.1.2018684471.1720447548&semt=ais_user') no-repeat center center fixed;
+                            background-size: cover;
+                            color: #fff;
+                            text-align: center;
+                        }
+                        h1 {
+                            font-size: 3em;
+                            margin-bottom: 20px;
+                            text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.7);
+                        }
+                        .weather-info {
+                            background-color: rgba(0, 0, 0, 0.5);
+                            padding: 30px;
+                            border-radius: 10px;
+                            box-shadow: 0 0 15px rgba(0, 0, 0, 0.5);
+                            margin-bottom: 20px;
+                            display: flex;
+                            flex-wrap: wrap;
+                            justify-content: space-around;
+                        }
+                        .weather-icon img {
+                            width: 100px;
+                            height: auto;
+                            margin-top: 20px;
+                            filter: brightness(0.8);
+                        }
+                        .temp {
+                            font-size: 4em;
+                            font-weight: bold;
+                            margin-bottom: 10px;
+                        }
+                        .weather-detail {
+                            width: 45%;
+                            margin-bottom: 20px;
+                            background-color: rgba(255, 255, 255, 0.2);
+                            padding: 15px;
+                            border-radius: 10px;
+                            box-shadow: 0 0 10px rgba(0, 0, 0, 0.3);
+                            text-align: left;
+                        }
+                        .weather-detail img {
+                            width: 40px;
+                            height: auto;
+                            vertical-align: middle;
+                            margin-right: 10px;
+                        }
+                    </style>
+                </head>
+                <body>
+                    <h1>Weather Information for ${village}</h1>
+                    <div class="weather-info">
+                        <div class="weather-detail">
+                            <img src="${weatherIconUrl}" alt="Weather Icon">
+                            <div>Temperature: ${temp} °C</div>
+                        </div>
+                        <div class="weather-detail">
+                            <img src="https://img.icons8.com/ios/50/000000/wind.png" alt="Wind Speed Icon">
+                            <div>Wind Speed: ${windSpeed} m/s</div>
+                        </div>
+                        <div class="weather-detail">
+                            <img src="https://img.icons8.com/ios/50/000000/humidity.png" alt="Humidity Icon">
+                            <div>Humidity: ${humidity}%</div>
+                        </div>
+                        <div class="weather-detail">
+                            <img src="https://img.icons8.com/ios/50/000000/atmospheric-pressure.png" alt="Pressure Icon">
+                            <div>Pressure: ${pressure} hPa</div>
+                        </div>
+                        <div class="weather-detail">
+                            <img src="https://img.icons8.com/?size=24&id=BKQegLJw8AVs&format=png" alt="Visibility Icon">
+                            <div>Visibility: ${visibility} km</div>
+                        </div>
+                    </div>
+                </body>
+                </html>
+            `);
+            newWindow.document.close();
+        })
+        .catch(error => {
+            console.error('Error:', error);
+            alert(`Weather information not available for ${village}`);
+        });
+});
