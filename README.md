@@ -14,6 +14,9 @@
 
 **OVER VIEW OF THE PROJECT**
 
+![weathersheet](https://github.com/user-attachments/assets/662a7903-bfd9-4616-85ba-9255550f16ad)
+
+
 ***Project:*** Website for Weather Information using HTML, CSS, and JavaScript.
 
 ***Objective:***
