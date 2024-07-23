@@ -14,22 +14,24 @@
 
 **OVER VIEW OF THE PROJECT**
 
-***PROJECT: WEATHER INFO USING HTML,CSS AND JAVASCRIPT***
+***Project:*** Website for Weather Information using HTML, CSS, and JavaScript.
 
 ***Objective:***
-The objective of this project is to create a website using HTML,CSS and JAVASCRIPT which gives the information about the weather of a particular city like raining or sunny,visibility,humidity,temperature,windspeed
-etc,.When we enter the city name in the search bar
+Create a website that provides weather information for a specified city, including details like weather conditions, visibility, humidity, temperature, and wind speed when a city name is entered in the search bar.
 
 ***Key Activities***
 
- -***Creating Structure:*** create the structure of the website using html and a particular order,which include html body,styling.
- 
- -***working of website:*** This can be done using the javascript language,so i have created a javascript structure for the key activities .JavaScript used to manipulate html and css. 
+***Creating Structure:*** Use HTML to build the structure of the website, including the body and layout.
 
-***Technologies used:**
+***Styling:*** Apply CSS for styling and visual enhancements.
 
--***Hyper Text Markup Language:*** For creating the structure of a website.
+***Functionality:*** Implement JavaScript to fetch and display weather data based on user input.
 
-***Cascading Style Sheet:*** For styling the webpage.
 
-***JavaScript:*** To add features such as form validation,animation,po-ups,carousels,and menus to website,making them more engaging and intuitive
+***Technologies Used***
+
+***HTML:*** For creating the website structure.
+
+***CSS:*** For styling the webpage.
+
+***JavaScript:*** To add dynamic features and functionality, such as form validation and data fetching.
